@@ -15,9 +15,13 @@ namespace Demo.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private static readonly List<Demo.Model.User> Data = new List<Model.User>
+        private static readonly List<Model.User> Data = new List<Model.User>
         {            
-                new Model.User{ UserId = "1", FirstName ="Tom", LastName="Cruise",Role="Actor",Location="New York",IsActive=true}
+                new Model.User{ UserId = "1", FirstName ="Tom", LastName="Cruise",Role="Actor",Location="New York",IsActive=true},
+                new Model.User{ UserId = "2", FirstName ="Chris", LastName="Pratt",Role="Actor",Location="Virginia",IsActive=true},
+                new Model.User{ UserId = "3", FirstName ="Jennifer ", LastName="Aniston",Role="Actress",Location="California",IsActive=true},
+                new Model.User{ UserId = "4", FirstName ="Ross", LastName="Geller",Role="Actor",Location="New York",IsActive=true},
+                new Model.User{ UserId = "5", FirstName ="Rachel", LastName="Green",Role="Actress",Location="New York",IsActive=false}
         };
 
         private readonly ILogger<UserController> _logger;
@@ -28,11 +32,16 @@ namespace Demo.Controllers
         }
 
         [HttpGet]
-        public IList<Demo.Model.User> Get()
+        public IList<Model.User> Get()
         {
             return Data;
         }
 
+        [HttpPost]
+        public void Post(Model.User model)
+        {
+            Data.Add(model);
+        }
 
     }
 }
