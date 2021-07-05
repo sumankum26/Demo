@@ -24,12 +24,12 @@ namespace Demo.Controllers
                 new Model.User{ UserId = "5", FirstName ="Rachel", LastName="Green",Role="Actress",Location="New York",IsActive=false}
         };
 
-        private readonly ILogger<UserController> _logger;
+        //private readonly ILogger<UserController> _logger;
 
-        public UserController(ILogger<UserController> logger)
-        {
-            _logger = logger;
-        }
+        //public UserController(ILogger<UserController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         [HttpGet]
         public IList<Model.User> Get()
@@ -38,9 +38,10 @@ namespace Demo.Controllers
         }
 
         [HttpPost]
-        public void Post(Model.User model)
+        public Model.User Post(Model.User model)
         {
             Data.Add(model);
+            return model;
         }
 
     }
